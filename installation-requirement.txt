@@ -1,3 +1,12 @@
+// Backend //
 express
 nodemon
 dotenv
+
+
+// Frontend //
+react-bootstrap
+
+// not install
+create file bootstrap.min.css
+open bootswatch.com for the template
