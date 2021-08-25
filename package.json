@@ -1,0 +1,19 @@
+{
+  "name": "note-mern",
+  "version": "1.0.0",
+  "description": "This is app about Note App using MERN",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/septianwijaya45/note-mern.git"
+  },
+  "author": "Septian Wijaya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/septianwijaya45/note-mern/issues"
+  },
+  "homepage": "https://github.com/septianwijaya45/note-mern#readme"
+}
