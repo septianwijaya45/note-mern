@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Accordion,
   AccordionToggle,
@@ -7,13 +8,25 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import MainScreen from "../../components/MainScreen";
-import notes from "../../data/note";
+import axios from "axios";
 
 const MyNote = () => {
+  const [notes, setNotes] = useState([]);
+
   const deleteHandler = (id) => {
     if (window.confirm("Are You Sure?")) {
     }
   };
+
+  const fetchNotes = async () => {
+    //untuk menghubungkan aplikasi backendnya, tambahkan proxy pada frontend/package.json
+    const { data } = await axios.get("/api/notes");
+    setNotes(data);
+  };
+
+  useEffect(() => {
+    fetchNotes();
+  }, []);
 
   return (
     <div>
@@ -24,7 +37,7 @@ const MyNote = () => {
           </Button>
         </Link>
         {notes.map((note) => (
-          <Accordion>
+          <Accordion key={note._id}>
             <Card style={{ margin: 10 }}>
               <Card.Header style={{ display: "flex" }}>
                 <span

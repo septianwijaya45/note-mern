@@ -7,6 +7,12 @@ dotenv
 // Frontend //
 react-bootstrap
 react-router-dom
+axios
+
+
+// Global //
+concurrently  // untuk menjalankan kedua server, digunakan di package.json global app
+mongoose
 
 // not install
 create file bootstrap.min.css
