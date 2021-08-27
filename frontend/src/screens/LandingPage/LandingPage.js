@@ -1,8 +1,15 @@
 import React, { useEffect } from "react";
 import { Button, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./LandingStyles.css";
 
 function LandingPage({ history }) {
+  // useEffect(() => {
+  //   const userInfo = localStorage.getItem("userInfo");
+  //   if (userInfo) {
+  //     history.push("/mynotes");
+  //   }
+  // }, [history]);
 
   return (
     <div className="main">
@@ -14,12 +21,12 @@ function LandingPage({ history }) {
               <p className="subtitle">One Safe place for all your notes.</p>
             </div>
             <div className="buttonContainer">
-              <a to="/login">
+              <Link to="/login">
                 <Button size="lg" className="landingbutton">
                   Login
                 </Button>
-              </a>
-              <a to="/register">
+              </Link>
+              <Link to="/register">
                 <Button
                   variant="outline-primary"
                   size="lg"
@@ -27,7 +34,7 @@ function LandingPage({ history }) {
                 >
                   Signup
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
         </Row>
