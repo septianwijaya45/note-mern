@@ -8,6 +8,10 @@ dotenv
 react-bootstrap
 react-router-dom
 axios
+npm i react-redux
+npm i redux 
+npm i redux-thunk
+npm i redux-devtools-extension
 
 
 // Global //

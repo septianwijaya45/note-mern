@@ -6,47 +6,34 @@ import "./LoginScreen.css";
 import axios from "axios";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/errorMessage";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../actions/userActions";
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState(null);
+
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/mynotes");
+    }
+  }, [history, userInfo]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    setMessage(null);
 
-    try {
-      const config = {
-        Headers: {
-          "Content-Type": "application/json",
-        },
-      };
-
-      setLoading(true);
-      const { data } = await axios.post(
-        "/api/users/login",
-        {
-          email,
-          password,
-        },
-        config
-      );
-
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      setLoading(false);
-    } catch (error) {
-      setMessage("Invalid Username/Password");
-      setLoading(false);
-    }
+    dispatch(login(email, password));
   };
 
   return (
     <MainScreen title="Login">
       <div className="loginContainer">
-        {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
+        {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {loading && <Loading />}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="formBasicEmail">

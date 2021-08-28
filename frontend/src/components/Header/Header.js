@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Navbar,
   Nav,
@@ -7,13 +7,20 @@ import {
   FormControl,
   Container,
 } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import { logout } from "../../actions/userActions";
 
-function Header() {
-  // let history = useHistory();
+const Header = () => {
+  const historyOut = useHistory();
+  const dispatch = useDispatch();
 
-  const location = {
-    pathname: "/",
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const logoutHeader = () => {
+    dispatch(logout());
+    historyOut.push("/");
   };
 
   return (
@@ -45,13 +52,7 @@ function Header() {
             <NavDropdown title="Septian Wijaya" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">My Profile</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item
-                onClick={() => {
-                  localStorage.removeItem("userInfo");
-                  // history.push(location);
-                  // this.props.history.push(location);
-                }}
-              >
+              <NavDropdown.Item onClick={logoutHeader}>
                 Log Out
               </NavDropdown.Item>
             </NavDropdown>
@@ -60,6 +61,6 @@ function Header() {
       </Container>
     </Navbar>
   );
-}
+};
 
 export default Header;
