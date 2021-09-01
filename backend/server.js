@@ -15,20 +15,13 @@ app.get("/", (req, res) => {
   res.send("API IS RUNNING");
 });
 
-app.get("/api/notes", (req, res) => {
-  res.json(notes);
-});
-
-app.get("/api/notes/:id", (req, res) => {
-  const data = notes.find((n) => n._id === req.params.id);
-  res.json(data);
-});
-
 // Routes Import //
 const userRoutes = require("./routes/userRoutes");
+const noteRoutes = require("./routes/noteRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 // ------------- //
 app.use("/api/users", userRoutes);
+app.use("/api/notes", noteRoutes);
 
 // Middleware Error //
 app.use(notFound);

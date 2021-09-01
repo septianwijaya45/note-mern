@@ -6,17 +6,27 @@ import { BrowserRouter, Route } from "react-router-dom";
 import MyNote from "./screens/MyNote/MyNote";
 import Login from "./screens/LoginScreen/Login";
 import Register from "./screens/RegisterScreen/Register";
+import CreateNote from "./screens/MyNote/CreateNote";
+import SingleNote from "./screens/MyNote/SingleNote";
+import { useState } from "react";
 
 const App = () => {
+  const [search, setSearch] = useState("");
   return (
     <BrowserRouter>
-      <Header />
+      <Header setSearch={setSearch} />
       <main>
         {/* exact untuk menghapus tampilan dan mengganti tampilan berdasarkan menu */}
         <Route path="/" component={LandingPage} exact />
         <Route path="/login" component={Login} exact />
         <Route path="/register" component={Register} exact />
-        <Route path="/mynotes" component={() => <MyNote />} exact />
+        <Route path="/createnote" component={CreateNote} />
+        <Route path="/note/:id" component={SingleNote} />
+        <Route
+          path="/mynotes"
+          component={() => <MyNote search={search} />}
+          exact
+        />
       </main>
       <Footer />
     </BrowserRouter>
