@@ -20,7 +20,6 @@ const getNoteById = expressAsyncHandler(async (req, res) => {
 /** Create Note */
 const createNote = expressAsyncHandler(async (req, res) => {
   const { title, content, category } = req.body;
-  console.log(req.body);
 
   if (!title || !content || !category) {
     res.status(400);

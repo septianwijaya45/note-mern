@@ -5,6 +5,7 @@ import LandingPage from "./screens/LandingPage/LandingPage";
 import { BrowserRouter, Route } from "react-router-dom";
 import MyNote from "./screens/MyNote/MyNote";
 import Login from "./screens/LoginScreen/Login";
+import Profile from "./screens/User/ProfileScreen";
 import Register from "./screens/RegisterScreen/Register";
 import CreateNote from "./screens/MyNote/CreateNote";
 import SingleNote from "./screens/MyNote/SingleNote";
@@ -20,8 +21,9 @@ const App = () => {
         <Route path="/" component={LandingPage} exact />
         <Route path="/login" component={Login} exact />
         <Route path="/register" component={Register} exact />
-        <Route path="/createnote" component={CreateNote} />
-        <Route path="/note/:id" component={SingleNote} />
+        <Route path="/profile" component={Profile} exact />
+        <Route path="/createnote" component={CreateNote} exact />
+        <Route path="/note/:id" component={SingleNote} exact />
         <Route
           path="/mynotes"
           component={() => <MyNote search={search} />}

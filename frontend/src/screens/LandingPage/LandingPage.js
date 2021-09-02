@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import "./LandingStyles.css";
 
 function LandingPage({ history }) {
-  // useEffect(() => {
-  //   const userInfo = localStorage.getItem("userInfo");
-  //   if (userInfo) {
-  //     history.push("/mynotes");
-  //   }
-  // }, [history]);
+  useEffect(() => {
+    const userInfo = localStorage.getItem("userInfo");
+    if (userInfo) {
+      history.push("/mynotes");
+    }
+  }, [history]);
 
   return (
     <div className="main">
